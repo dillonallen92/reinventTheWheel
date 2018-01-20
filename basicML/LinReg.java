@@ -1,7 +1,13 @@
+/*
 
+Linear Regression Calculator
+
+*/
+
+import java.util.Arrays;
 
 // Linear Regression Formula
-class LinReg
+class LinReg implements Regressor
 {
   private final double intercept, slope, r2;
 
@@ -51,8 +57,24 @@ class LinReg
 
   public String dataReport()
   {
-    return "The regression line is y_hat = " + intercept + " + " + slope + "* x" + " with an R2 of " + r2;
 
+    return "The regression line is y_hat = " + intercept + " + " + slope + "*x" + "\n" + "with an R2 of " + r2;
+
+  }
+
+  public double[] predict(double[] x)
+  {
+
+    int j = x.length;
+
+    double[] predictors = new double[j];
+
+    for(int i = 0; i < j; i++)
+    {
+      predictors[i] = intercept + slope*x[i];
+    }
+
+    return predictors;
   }
 
 }
